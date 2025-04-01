@@ -817,7 +817,8 @@
         }
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('DOMContentLoaded', function() {
+            // FAQ accordion functionality
             const faqQuestions = document.querySelectorAll('.faq-question');
             
             faqQuestions.forEach(question => {
@@ -830,9 +831,25 @@
                     answer.classList.toggle('active');
                 });
             });
+            
+            // Image modal functionality
+            const modal = document.getElementById('imageModal');
+            const closeBtn = document.querySelector('.close');
+            
+            // Close modal when clicking the X
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside the image
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
         });
         
-        // Image modal functionality
+        // Image modal open function
         function openModal(element) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImg');
@@ -842,24 +859,6 @@
             modal.style.display = 'flex';
             modalImg.src = imgSrc;
             modalImg.alt = imgAlt;
-        }
-        
-        // Get the modal
-        const modal = document.getElementById('imageModal');
-        
-        // Get the <span> element that closes the modal
-        const closeBtn = document.getElementsByClassName('close')[0];
-        
-        // When the user clicks on <span> (x), close the modal
-        closeBtn.onclick = function() {
-            modal.style.display = 'none';
-        }
-        
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
         }
         
         // Copy token address function
@@ -907,9 +906,18 @@
                 <p>The world's first pigeon-based meme coin that's dropping alpha (and... other stuff) all over the crypto market. Join the flock and let's coo to the moon!</p>
                 <a href="#" class="btn hero-cta">🚀 FLOCK UP & GET RICH 🚀</a>
                 <a href="https://x.com/PIDGY_BSC" class="btn">Join the Pidgy Army</a>
+                <section id="token">
+                    <div class="token-verify">
+                        <h3>Verified $PIDGY Token Contract</h3>
+                        <div class="token-address">
+                            <div class="token-address-text">0x7a32d74C9341C5Fce4D9eE252D436E5F2DE6375b</div>
+                            <button class="copy-btn" onclick="copyTokenAddress()">Copy Address</button>
+                        </div>
+                    </div>
+                </section>
             </div>
             <div class="hero-image">
-                <img src="images/pidgy-hero.png" alt="Pidgy Hero">
+                <img src="images/pidgy-hero-1.png" alt="Pidgy Hero">
             </div>
             <div class="glow-effect"></div>
         </section>
@@ -955,15 +963,15 @@
                 </div>
                 <div class="gallery-item" onclick="openModal(this)">
                     <img src="images/2.png" alt="Pidgy Style 2">
-                    <div class="gallery-caption">Moonbound Pidgy</div>
+                    <div class="gallery-caption">Ms.Pidgy</div>
                 </div>
                 <div class="gallery-item" onclick="openModal(this)">
                     <img src="images/4.png" alt="Pidgy Style 3">
-                    <div class="gallery-caption">Diamond Wings Pidgy</div>
+                    <div class="gallery-caption">Lord Pidgy</div>
                 </div>
                 <div class="gallery-item" onclick="openModal(this)">
                     <img src="images/3.png" alt="Pidgy Style 4">
-                    <div class="gallery-caption">Alpha Dropper Pidgy</div>
+                    <div class="gallery-caption">Astro Pidgy</div>
                 </div>
             </div>
         </section>
